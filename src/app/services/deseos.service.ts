@@ -9,11 +9,7 @@ export class DeseosService {
   listas: Lista[]=[];
 
   constructor() {
-
-      const lista1 = new Lista('Titulo 1');
-      const lista2 = new Lista('Titulo 2');
-
-      this.listas.push(lista1, lista2);
+      this.crearStorage();
 
   }
 
@@ -21,5 +17,14 @@ export class DeseosService {
       const nuevalista = new Lista(titulo);
 
       this.listas.push(nuevalista);
+      this.guardarStorage();
+  }
+
+  guardarStorage(){
+      localStorage.setItem('data', JSON.stringify(this.listas));
+  }
+
+  crearStorage(){
+      (localStorage.getItem('data'))?this.listas = JSON.parse(localStorage.getItem('data')):this.listas=[];
   }
 }
