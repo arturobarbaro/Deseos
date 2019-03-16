@@ -18,6 +18,13 @@ export class DeseosService {
 
       this.listas.push(nuevalista);
       this.guardarStorage();
+
+      return nuevalista.id;
+  }
+
+  obtenerLista( id: string | number){
+      id = Number(id);
+      return this.listas.find(listaData => listaData.id===id);
   }
 
   guardarStorage(){
